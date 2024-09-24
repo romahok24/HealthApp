@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  healthapp.web.api:
+    image: ${DOCKER_REGISTRY-}healthappwebapi
+    build:
+      context: .
+      dockerfile: HealthApp.Api/Dockerfile

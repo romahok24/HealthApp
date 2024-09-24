@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Api", "HealthApp.Api\HealthApp.Api.csproj", "{90015BDF-F77F-4379-9338-E29E3DC3A3B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthApp.Web.Api", "HealthApp.Api\HealthApp.Web.Api.csproj", "{90015BDF-F77F-4379-9338-E29E3DC3A3B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Domain", "HealthApp.Domain\HealthApp.Domain.csproj", "{74650727-39D8-44A5-B56D-18A140B15233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthApp.Domain", "HealthApp.Domain\HealthApp.Domain.csproj", "{74650727-39D8-44A5-B56D-18A140B15233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Application", "HealthApp.Application\HealthApp.Application.csproj", "{6226F44D-AD1D-4B7B-BA7E-A1F072F63010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthApp.Application", "HealthApp.Application\HealthApp.Application.csproj", "{6226F44D-AD1D-4B7B-BA7E-A1F072F63010}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Infrastructure", "HealthApp.Infrastructure\HealthApp.Infrastructure.csproj", "{1FF4894E-8B03-433F-A86F-827C9E4BF612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthApp.Infrastructure", "HealthApp.Infrastructure\HealthApp.Infrastructure.csproj", "{1FF4894E-8B03-433F-A86F-827C9E4BF612}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthApp.Console", "HealthApp.Console\HealthApp.Console.csproj", "{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC3B239D-60C5-446A-9279-2D49119FF19D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{24CB5189-49E5-4D8B-B70B-EDF1BAFF5D26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,24 @@ Global
 		{1FF4894E-8B03-433F-A86F-827C9E4BF612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF4894E-8B03-433F-A86F-827C9E4BF612}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF4894E-8B03-433F-A86F-827C9E4BF612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CB5189-49E5-4D8B-B70B-EDF1BAFF5D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CB5189-49E5-4D8B-B70B-EDF1BAFF5D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CB5189-49E5-4D8B-B70B-EDF1BAFF5D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CB5189-49E5-4D8B-B70B-EDF1BAFF5D26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90015BDF-F77F-4379-9338-E29E3DC3A3B5} = {7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}
+		{74650727-39D8-44A5-B56D-18A140B15233} = {7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}
+		{6226F44D-AD1D-4B7B-BA7E-A1F072F63010} = {7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}
+		{1FF4894E-8B03-433F-A86F-827C9E4BF612} = {7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}
+		{A8B827A2-DFC1-4AD1-83AF-2F236C03A9FE} = {7AB858FE-406D-4CF6-9D12-7E7C1F4A3FE1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41A1CBF4-3BA4-4AAB-8C7F-C6DE04282671}
