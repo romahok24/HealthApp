@@ -2,4 +2,4 @@
 
 namespace HealthApp.Application.Patients.Get;
 
-public sealed record GetPatientQuery(List<string> BirthDate) : IQuery<IReadOnlyList<PatientResponse>>;
+public sealed record GetPatientQuery() : IQuery<IReadOnlyList<PatientResponse>>;

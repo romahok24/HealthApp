@@ -5,11 +5,11 @@ using HealthApp.Domain.Patients;
 
 namespace HealthApp.Application.Patients.Delete;
 
-internal sealed class DeletePatientCommandHandler : ICommandHandler<DeletePatientCommand>
+public sealed class DeletePatientCommandHandler : ICommandHandler<DeletePatientCommand>
 {
     private readonly IPatientRepository _patientRepository;
 
-    internal DeletePatientCommandHandler(IPatientRepository patientRepository)
+    public DeletePatientCommandHandler(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;
     }
@@ -19,7 +19,7 @@ internal sealed class DeletePatientCommandHandler : ICommandHandler<DeletePatien
         CancellationToken cancellationToken)
     {
         var patient = await _patientRepository.GetByIdAsync(
-            command.Id, 
+            command.Id,
             cancellationToken);
 
         if (patient is null)

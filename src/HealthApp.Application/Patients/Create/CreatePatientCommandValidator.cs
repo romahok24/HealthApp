@@ -7,8 +7,8 @@ public class CreatePatientCommandValidator : AbstractValidator<CreatePatientComm
     public CreatePatientCommandValidator()
     {
         RuleFor(x => x.Name).NotNull();
-        RuleFor(x => x.Name.Family).NotNull();
-        RuleFor(x => x.BirthDate).NotNull();
+        RuleFor(x => x.Name.Family).NotNull().NotEmpty();
+        RuleFor(x => x.BirthDate).NotNull().NotEmpty();
         RuleFor(x => x.Gender).IsInEnum();
     }
 }

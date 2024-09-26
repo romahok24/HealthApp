@@ -5,11 +5,11 @@ using HealthApp.Domain.Patients;
 
 namespace HealthApp.Application.Patients.Update;
 
-internal sealed class UpdatePatientCommandHandler : ICommandHandler<UpdatePatientCommand, Guid>
+public sealed class UpdatePatientCommandHandler : ICommandHandler<UpdatePatientCommand, Guid>
 {
     private readonly IPatientRepository _patientRepository;
 
-    internal UpdatePatientCommandHandler(IPatientRepository patientRepository)
+    public UpdatePatientCommandHandler(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;
     }

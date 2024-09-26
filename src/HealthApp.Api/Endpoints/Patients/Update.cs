@@ -2,6 +2,7 @@
 using HealthApp.Web.Api.Extensions;
 using HealthApp.Web.Api.Infrastructure;
 using MediatR;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace HealthApp.Web.Api.Endpoints.Patients;
 
@@ -14,6 +15,9 @@ internal sealed class Update : IEndpoint
             var result = await sender.Send(command, cancellationToken);
 
             return result.Match(CustomResults.Ok, CustomResults.Problem);
-        });
+        })
+        .WithMetadata(new SwaggerOperationAttribute(
+            summary: "Обновление пациента.",
+            description: "Эндпоинт для обновления данных пациента."));
     }
 }

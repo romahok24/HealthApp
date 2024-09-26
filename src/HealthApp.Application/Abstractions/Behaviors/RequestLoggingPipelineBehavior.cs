@@ -5,13 +5,13 @@ using Serilog.Context;
 
 namespace HealthApp.Application.Abstractions.Behaviors;
 
-internal sealed class RequestLoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public sealed class RequestLoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : class
     where TResponse : Result
 {
     private readonly ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> _logger;
 
-    internal RequestLoggingPipelineBehavior(ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger)
+    public RequestLoggingPipelineBehavior(ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger)
     {
         _logger = logger;
     }

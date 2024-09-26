@@ -1,6 +1,6 @@
-﻿using HealthApp.Domain.Abstractions.Specification;
+﻿using HealthApp.Application.Abstractions.Specification;
 using HealthApp.Domain.Patients;
-using HealthApp.Domain.Patients.Specification;
+using HealthApp.Domain.Patients.Specification.BirthDate;
 
 namespace HealthApp.Application.Extensions;
 

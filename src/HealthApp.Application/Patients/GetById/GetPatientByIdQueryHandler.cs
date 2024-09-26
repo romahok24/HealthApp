@@ -5,11 +5,11 @@ using HealthApp.Domain.Patients;
 
 namespace HealthApp.Application.Patients.GetById;
 
-internal sealed class GetPatientByIdQueryHandler : IQueryHandler<GetPatientByIdQuery, PatientResponse>
+public sealed class GetPatientByIdQueryHandler : IQueryHandler<GetPatientByIdQuery, PatientResponse>
 {
     private readonly IPatientRepository _patientRepository;
 
-    internal GetPatientByIdQueryHandler(IPatientRepository patientRepository)
+    public GetPatientByIdQueryHandler(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;
     }

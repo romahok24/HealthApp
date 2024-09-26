@@ -125,8 +125,8 @@ var females = Generator.GeneratePatient(femaleNames, femaleFamily, femaleSurname
 
 using var client = new HttpClient();
 
-foreach(var human in females.Concat(males))
+foreach (var human in females.Concat(males))
 {
-    var response = await client.PostAsJsonAsync("", human);
+    var response = await client.PostAsJsonAsync("http://localhost/patients", human);
     Console.WriteLine(response.StatusCode);
 }

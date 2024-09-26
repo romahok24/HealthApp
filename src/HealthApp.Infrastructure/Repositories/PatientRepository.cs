@@ -1,8 +1,10 @@
 ﻿using HealthApp.Application.Abstractions.Data;
 using HealthApp.Application.Abstractions.Repositories;
-using HealthApp.Domain.Abstractions.Specification;
+using HealthApp.Application.Abstractions.Specification;
 using HealthApp.Domain.Patients;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using static HealthApp.Infrastructure.Constants;
 
 namespace HealthApp.Infrastructure.Repositories;
 
@@ -13,27 +15,46 @@ public class PatientRepository : IPatientRepository
 
     public PatientRepository(IMongoDbContext mongoDbContext)
     {
-        // TODO: вынести в константу
         _mongoDbContext = mongoDbContext;
-        _patients = _mongoDbContext.GetCollection<Patient>("Patient");
+        _patients = _mongoDbContext.GetCollection<Patient>(Collections.Patients);
     }
 
-    public async Task<List<Patient>> GetAllAsync(
-        Specification<Patient> specification, 
-        CancellationToken cancellationToken)
+    public async Task<List<Patient>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _patients
-            .Find(specification.ToExpression())
+        var bsonPatients = await _patients
+            .Find("{}")
+            .Project("{_id: 0}")
             .ToListAsync(cancellationToken);
+
+        return bsonPatients
+            .Select(x => BsonSerializer.Deserialize<Patient>(x))
+            .ToList();
     }
 
     public async Task<Patient> GetByIdAsync(
         Guid id, 
         CancellationToken cancellationToken)
     {
-        return await _patients
+        var bsonPatient = await _patients
             .Find(x => x.Name.Id == id)
+            .Project("{_id: 0}")
             .FirstOrDefaultAsync(cancellationToken);
+
+        return BsonSerializer.Deserialize<Patient>(bsonPatient);
+    }
+
+    public async Task<List<Patient>> SearchAsync(
+        Specification<Patient> specification,
+        CancellationToken cancellationToken)
+    {
+        var bsonPatients = await _patients
+            .Find(specification.ToFilterDefinition())
+            .Project("{_id: 0}")
+            .ToListAsync(cancellationToken);
+
+        return bsonPatients
+            .Select(x => BsonSerializer.Deserialize<Patient>(x))
+            .ToList();
     }
 
     public async Task CreateAsync(

@@ -44,7 +44,6 @@ internal class Generator
         return patients;
     }
 
-
     private static Name GenerateName(
         string name, 
         string secondName, 

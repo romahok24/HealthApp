@@ -6,13 +6,13 @@ using System.Reflection;
 
 namespace HealthApp.Application.Abstractions.Behaviors;
 
-internal sealed class ValidationPipelineBehavior<TRequest, TResponse>
+public sealed class ValidationPipelineBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : class
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-    internal ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
+    public ValidationPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators;
     }

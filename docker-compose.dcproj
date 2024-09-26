@@ -7,7 +7,7 @@
     <ProjectGuid>24cb5189-49e5-4d8b-b70b-edf1baff5d26</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>healthapp.web.api</DockerServiceName>
+    <DockerServiceName>healthapp.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

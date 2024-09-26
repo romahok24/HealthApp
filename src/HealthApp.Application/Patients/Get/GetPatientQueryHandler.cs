@@ -1,16 +1,15 @@
 ﻿using HealthApp.Application.Abstractions.Queries;
 using HealthApp.Application.Abstractions.Repositories;
-using HealthApp.Application.Extensions;
 using HealthApp.Domain.Abstractions;
 using MongoDB.Driver;
 
 namespace HealthApp.Application.Patients.Get;
 
-internal sealed class GetPatientQueryHandler : IQueryHandler<GetPatientQuery, IReadOnlyList<PatientResponse>>
+public sealed class GetPatientQueryHandler : IQueryHandler<GetPatientQuery, IReadOnlyList<PatientResponse>>
 {
     private readonly IPatientRepository _patientRepository;
 
-    internal GetPatientQueryHandler(IPatientRepository patientRepository)
+    public GetPatientQueryHandler(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;
     }
@@ -19,13 +18,7 @@ internal sealed class GetPatientQueryHandler : IQueryHandler<GetPatientQuery, IR
         GetPatientQuery query, 
         CancellationToken cancellationToken)
     {
-        var specification = query
-            .BirthDate
-            .ToSpecification();
-
-        var patients = await _patientRepository.GetAllAsync(
-            specification, 
-            cancellationToken);
+        var patients = await _patientRepository.GetAllAsync(cancellationToken);
         
         return patients
             .Select(x => new PatientResponse(

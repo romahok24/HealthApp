@@ -1,6 +1,6 @@
-﻿using HealthApp.Domain.Abstractions.Specification;
+﻿using HealthApp.Application.Abstractions.Specification;
 
-namespace HealthApp.Domain.Patients.Specification;
+namespace HealthApp.Domain.Patients.Specification.BirthDate;
 
 public class BirthDateSpecificationFactory
 {

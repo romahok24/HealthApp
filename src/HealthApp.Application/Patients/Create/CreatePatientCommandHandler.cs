@@ -5,11 +5,11 @@ using HealthApp.Domain.Patients;
 
 namespace HealthApp.Application.Patients.Create;
 
-internal sealed class CreatePatientCommandHandler : ICommandHandler<CreatePatientCommand, Guid>
+public sealed class CreatePatientCommandHandler : ICommandHandler<CreatePatientCommand, Guid>
 {
     private readonly IPatientRepository _patientRepository;
 
-    internal CreatePatientCommandHandler(IPatientRepository patientRepository)
+    public CreatePatientCommandHandler(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;
     }
