@@ -1,0 +1,263 @@
+{
+    "info": {
+      "name": "Patient API CRUD",
+      "description": "Коллекция для демонстрации CRUD методов с несколькими пациентами и поиска по birthDate",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Patient 1",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": {\n        \"id\": \"00000000-0000-0000-0000-000000000001\",\n        \"use\": \"official\",\n        \"family\": \"Smith\",\n        \"given\": [\"Alice\", \"Johnson\"]\n    },\n    \"gender\": \"Female\",\n    \"birthDate\": \"1990-04-10T00:00:00\",\n    \"active\": true\n}"
+          },
+          "url": {
+            "raw": "http://localhost/patients",
+            "host": [
+              "http://localhost"
+            ],
+            "port": "80",
+            "path": [
+              "patients"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "// Сохранение ID пациента 1",
+                "let response = pm.response.json();",
+                "pm.environment.set(\"Patient1_Id\", response.name.id);"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Create Patient 2",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": {\n        \"id\": \"00000000-0000-0000-0000-000000000002\",\n        \"use\": \"official\",\n        \"family\": \"Doe\",\n        \"given\": [\"John\", \"Smith\"]\n    },\n    \"gender\": \"Male\",\n    \"birthDate\": \"1980-01-01T00:00:00\",\n    \"active\": true\n}"
+          },
+          "url": {
+            "raw": "http://localhost/patients",
+            "host": [
+              "http://localhost"
+            ],
+            "port": "80",
+            "path": [
+              "patients"
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "// Сохранение ID пациента 2",
+                "let response = pm.response.json();",
+                "pm.environment.set(\"Patient2_Id\", response.name.id);"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Get Patient 1 by Id",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost/patients/{{Patient1_Id}}",
+            "host": [
+              "http://localhost"
+            ],
+            "port": "80",
+            "path": [
+              "patients",
+              "{{Patient1_Id}}"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Patient 2 by Id",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost/patients/{{Patient2_Id}}",
+            "host": [
+              "http://localhost"
+            ],
+            "port": "80",
+            "path": [
+              "patients",
+              "{{Patient2_Id}}"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Patient 1",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw","raw": "{\n    \"name\": {\n        \"id\": \"{{Patient1_Id}}\",\n        \"use\": \"official\",\n        \"family\": \"Smith\",\n        \"given\": [\"Alice\", \"Thompson\"]\n    },\n    \"gender\": \"Female\",\n    \"birthDate\": \"1990-04-10T00:00:00\",\n    \"active\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost/patients",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "80",
+          "path": [
+            "patients"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Patient 2",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": {\n        \"id\": \"{{Patient2_Id}}\",\n        \"use\": \"official\",\n        \"family\": \"Doe\",\n        \"given\": [\"Johnathan\", \"Smith\"]\n    },\n    \"gender\": \"Male\",\n    \"birthDate\": \"1980-01-01T00:00:00\",\n    \"active\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost/patients",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "80",
+          "path": [
+            "patients"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Patient 1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/patients/{{Patient1_Id}}",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "80",
+          "path": [
+            "patients",
+            "{{Patient1_Id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Patient 2",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/patients/{{Patient2_Id}}",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "80",
+          "path": [
+            "patients",
+            "{{Patient2_Id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Patients by BirthDate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"birthDate\": [\n        \"le1990-04-10\",\n        \"ge1980-01-01\"\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost/patients/search",
+          "host": [
+            "http://localhost"
+          ],
+          "port": "80",
+          "path": [
+            "patients",
+            "search"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "Patient1_Id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "Patient2_Id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
